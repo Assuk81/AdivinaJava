@@ -1,0 +1,79 @@
+//Juan Carlos Corredor Sánchez https://github.com/Assuk81/AdivinaJava.git
+
+
+package claseDia8;
+
+import java.util.Scanner;
+
+/*
+ * 
+ * Algoritmo Adivina_Numero
+    
+    intentos<-10
+    
+    
+    num_secreto<-azar(100)+1
+    //la de arriba pseudocodigo y abajo java
+    int numSecreto = (int) (Math.random() *100+1)
+   
+    Escribir "Adivine el numero(de 1 a 100):"
+    Leer num_ingresado
+    Mientras num_secreto<>num_ingresado Y intentos>1 Hacer
+        Si num_secreto>num_ingresado Entonces
+            Escribir "Muy bajo"
+        SiNo
+            Escribir "Muy alto"
+        FinSi
+        intentos<-intentos-1
+    Escribir "Le quedan ", intentos," intentos:"
+        Leer num_ingresado
+    FinMientras
+    
+    Si num_secreto=num_ingresado Entonces
+        Escribir "Exacto! Usted adivino en ",11-intentos," intentos."
+    Sino
+        Escribir "El numero era: ",num_secreto
+    FinSi
+    
+FinAlgoritmo
+
+ */
+public class adivinaNumero {
+
+	public static void main(String[] args) {
+		int intentos=10;
+		int numSecreto = (int) (Math.random() *100 + 1);//numero aleatorio entre 0 y 1 con decimales. multiplicar por 100 para que el numero aleatorio sea 100
+		int numIngresado;
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce un número");
+		numIngresado = sc.nextInt();//leer numero ingresado con Scanner
+
+		while (numSecreto != numIngresado && intentos > 1) {//while es mientras numero secreto sea distinto al numero ingresado y los intentos sean mayor a 1, entonces haces 
+
+			if(numIngresado > 100 || numIngresado < 1) {
+				System.out.println("Introduce un número entre 1 y 100");	
+			}else{
+				if (numSecreto > numIngresado) {
+					System.out.println("Muy bajo");
+				}else{
+					System.out.println("Muy alto");
+				}
+				intentos = intentos-1;
+			}
+
+			System.out.println("Le quedan " + intentos + " intentos");
+			numIngresado = sc.nextInt();//leer numero ingresado con Scanner
+		}
+		//fin de while, hasta aqui se explica lo que hace el bucle mientras no se acierta continua con mas intentos hasta un maximo de 10 intentos.
+		//ahora se añade la condicion de si se acierta
+		
+		if (numSecreto == numIngresado) {
+			System.out.println("Exacto! Usted adivinó en " + (11 - intentos) + " intentos");//el calculo entre parentesis para que lo haga primero, la cadena de string y int
+		}else {
+			System.out.println("El número era: " + numSecreto);
+		}
+
+	}
+
+}
